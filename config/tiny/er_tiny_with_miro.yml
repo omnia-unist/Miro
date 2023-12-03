@@ -1,0 +1,69 @@
+parameters:
+  agent_name: er_tiny
+  batch_size: 128
+  data_order: fixed
+  epochs: 70
+  filename: er_tiny_with_miro_
+  get_history: false
+  graph: false
+  load_from_history: true
+  mode: disjoint
+  model: resnet18
+  num_task_cls_per_task:
+  - - 20
+    - 10
+  num_workers: 2
+  rb_path: data/cl_saved_data/tiny_imagenet/fixed/
+  rb_size: 2000
+  result_save_path: results_test/tiny/
+  run: 1
+  sampling: ringbuffer
+  save_final_model: false
+  checkpoint_path: ./saved_checkpoints/
+  save_tasks: true
+  saver: true
+  seed_start: 0
+  st_size: 5000
+  swap: true
+  swap_base: random
+  swap_options: []
+  swap_period: 1
+  test_set: tiny_imagenet
+  test_set_path: data/processed
+  threshold:
+  - 1
+  jetson: false
+  optimizer:
+    acc_coeff: 0.6
+    ckpt_size: 10
+    configs:
+      rb_size:
+      - 1000
+      - 2000
+      - 3000
+      - 4000
+      - 5000
+      - 8000
+      - 10000
+      - 12000
+      - 15000
+      - 20000
+      st_size:
+      - 1000
+      - 2000
+      - 3000
+      - 4000
+      - 5000
+    cutline: 0.2
+    data_ratio: 0.05
+    energy_coeff: 0.4
+    layer_freeze: []
+    navi_policy:
+    - random
+    - 0.2
+    pretrain: false
+    score_policy: highest_ETA
+    seed: 3
+    start_point: 6
+    trail_duration: 5
+    use_ckpt: true

@@ -1,0 +1,35 @@
+parameters:
+  agent_name: er_tiny
+  batch_size: 128
+  data_order: fixed
+  epochs: 70
+  filename: er_tiny_without_miro_
+  get_history: false
+  graph: false
+  load_from_history: false
+  mode: disjoint
+  model: resnet18
+  num_task_cls_per_task:
+  - - 20
+    - 10
+  num_workers: 2
+  rb_path: data/cl_saved_data/tiny_imagenet/fixed/
+  rb_size: 2000
+  result_save_path: results_test/tiny/
+  run: 1
+  sampling: ringbuffer
+  save_final_model: false
+  checkpoint_path: ./saved_checkpoints/
+  save_tasks: true
+  saver: true
+  seed_start: 0
+  st_size: 5000
+  swap: true
+  swap_base: random
+  swap_options: []
+  swap_period: 1
+  test_set: tiny_imagenet
+  test_set_path: data/processed
+  threshold:
+  - 1
+  jetson: false

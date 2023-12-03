@@ -1,0 +1,33 @@
+parameters:
+  agent_name: er_imgnet1k
+  batch_size: 128
+  data_order: fixed
+  epochs: 60
+  filename: er_img1k_without_miro_
+  get_history: false
+  graph: false
+  load_first_task: true
+  mode: disjoint
+  model: resnet18
+  num_task_cls_per_task:
+  - - 50
+    - 20
+  num_workers: 2
+  rb_path: data/cl_saved_data/imagenet1k/fixed/
+  checkpoint_path: ./saved_checkpoints/
+  rb_size: 20000
+  result_save_path: results_test/imagenet1k/
+  run: 1
+  sampling: ringbuffer
+  save_final_model: false
+  save_tasks: true
+  saver: false
+  seed_start: 0
+  st_size: 26000
+  swap: true
+  swap_base: random
+  swap_period: 1
+  test_set: imagenet1000
+  test_set_path: /data/imagenet_data/Data/CLS-LOC/
+  threshold:
+  - 1

@@ -1,0 +1,50 @@
+# This would be the cfg for DSADS with Miro
+# This would be "Full" profiling
+
+parameters:
+  agent_name: er_dsads
+  test_set: dailynsports
+  test_set_path: data/dailynsports_data
+  model: resnet18
+  mode: disjoint
+  filename: er_dsads_with_miro_
+  result_save_path: results_test/dsads/
+  save_final_model: false
+  save_tasks: true
+  checkpoint_path: ./saved_checkpoints/
+  saver: false 
+  run: 1
+  epochs: 10
+  batch_size: 16
+  data_order: fixed
+  num_task_cls_per_task:
+  - - 10 
+    - 2
+  seed_start: 0
+  num_workers: 2
+  load_first_task: true
+  swap: true
+  swap_base: random # Swap policy
+  swap_period: 1 # Creates swap skips, 1 means no skipping
+  threshold: # Swap ratio
+  - 0.25 
+  rb_path: data/cl_saved_data/dailynsports
+  rb_size: 500
+  st_size: 768
+  sampling: ringbuffer
+  jetson: false
+  optimizer:
+    configs:  ['(400,384)', '(200,576)', '(800,192)', '(600,768)', '(1200,192)', '(1500,768)', '(700,576)', '(2000,192)', '(500,768)', '(300,384)']
+    cutline: 0.4
+    navi_policy:
+    - grid
+    - none
+    score_policy: highest_ETA
+    start_point: 6 # Start point of optimizer
+    trail_duration: 1 # Number of epochs to run after miniprofiler ckpt
+    pretrain: false
+    use_ckpt: false # ckpt use for the profiler -> miniprofiler ckpt not real ckpt
+    ckpt_size: 1 # number of epochs miniprofiler ckpt is trained -> trail_duration will go after this
+    data_ratio: 0.05 # 0 to 1 value 1 = full data usage for mini profiler
+    
+  

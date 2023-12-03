@@ -1,0 +1,32 @@
+
+parameters:
+  agent_name: er_us8k
+  batch_size: 10
+  data_order: fixed
+  epochs: 100
+  filename: er_us8k_without_miro
+  get_history: false
+  load_from_history: false
+  mode: disjoint
+  model: resnet18
+  num_task_cls_per_task: [[10,1]]
+  num_workers: 2
+  rb_path: data/cl_saved_data/urbansound8k/fixed_2/
+  rb_size: 100
+  result_save_path: results_test/us8k/
+  run: 1
+  checkpoint_path: ./saved_checkpoints/
+  sampling: ringbuffer
+  save_tasks: true
+  saver: true
+  seed_start: 0
+  st_size: 1000
+  swap: true
+  swap_base: random
+  swap_period: 1
+  test_set: urbansound8k
+  test_set_path: data/UrbanSound8K_spec
+  threshold:
+  - 0.5
+  total_balance: false
+  jetson: false
