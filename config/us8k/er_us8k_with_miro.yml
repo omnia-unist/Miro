@@ -1,0 +1,46 @@
+
+parameters:
+  agent_name: er_us8k
+  batch_size: 10
+  data_order: fixed
+  epochs: 100
+  filename: er_us8k_with_miro_
+  get_history: false
+  load_from_history: true
+  mode: disjoint
+  model: resnet18
+  num_task_cls_per_task: [[10,1]]
+  num_workers: 2
+  rb_path: data/cl_saved_data/urbansound8k/fixed_2/
+  rb_size: 100
+  result_save_path: results_test/us8k/
+  manual_config: {'rb_size':[100,100,100,100,100],'st_size':[1000,1000,1000,1000,1000]}
+  run: 1
+  sampling: ringbuffer
+  save_tasks: true
+  saver: true
+  seed_start: 0
+  st_size: 1000
+  swap: true
+  swap_base: random
+  swap_period: 1
+  test_set: urbansound8k
+  test_set_path: data/UrbanSound8K_spec
+  checkpoint_path: ./saved_checkpoints/
+  threshold:
+  - 0.5
+  total_balance: false
+  jetson: false
+  optimizer: 
+    trail_duration: 5
+    score_policy: 'highest_ETA'
+    configs: {'rb_size': [100,200,300,400,500,600,800,1000,1200,1500,1800,2100,2400,3000],'st_size':[200,400,600,800,1000]}
+    navi_policy: ['random',0.2]
+    cutline: 0.5
+    data_ratio: 1
+    ckpt_size: 10
+    start_point: 6
+    acc_coeff: 0.6
+    energy_coeff: 0.4
+    pretrain: true
+    use_ckpt: false

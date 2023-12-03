@@ -1,0 +1,34 @@
+parameters:
+  agent_name: er_cifar
+  batch_size: 128
+  data_order: fixed
+  epochs: 70
+  filename: carm-extra/config/test_
+  load_from_history: false
+  get_history: false
+  graph: false
+  mode: disjoint
+  model: resnet32
+  num_task_cls_per_task:
+  - - 10
+    - 10
+  num_workers: 2
+  rb_path: data/cl_saved_data/cifar100/fixed/
+  rb_size: 2000
+  result_save_path: results_test/cifar100/
+  run: 1
+  checkpoint_path: ./saved_checkpoints/
+  sampling: ringbuffer
+  save_final_model: false
+  save_tasks: false
+  saver: true
+  seed_start: 0
+  st_size: 5000
+  swap: true
+  swap_base: random
+  swap_period: 1
+  test_set: cifar100
+  test_set_path: data/cifar-100-python
+  threshold:
+  - 1
+  jetson: false

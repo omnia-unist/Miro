@@ -1,0 +1,35 @@
+# This would be the cfg for DSADS with Miro
+# This would be "Full" profiling
+
+parameters:
+  agent_name: er_dsads
+  test_set: dailynsports
+  test_set_path: data/dailynsports_data
+  model: resnet18
+  mode: disjoint
+  filename: er_dsads_without_miro_
+  result_save_path: results_test/dsads/
+  save_final_model: false
+  save_tasks: true
+  checkpoint_path: ./saved_checkpoints/
+  saver: false 
+  run: 1
+  epochs: 10
+  batch_size: 16
+  data_order: fixed
+  num_task_cls_per_task:
+  - - 10 
+    - 2
+  seed_start: 0
+  num_workers: 2
+  load_first_task: true
+  swap: true
+  swap_base: random # Swap policy
+  swap_period: 1 # Creates swap skips, 1 means no skipping
+  threshold: # Swap ratio
+  - 0.25 
+  rb_path: data/cl_saved_data/dailynsports
+  rb_size: 500
+  st_size: 768
+  jetson: false
+  sampling: ringbuffer
