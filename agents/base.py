@@ -6,23 +6,15 @@ import copy
 from torchvision import transforms
 import torch.multiprocessing as python_multiprocessing
 
-import random
 from dataset.stream import MultiTaskStreamDataset
-import networks
 from networks.myNetwork import network
-from networks.resnet_cbam import resnet18_cbam, resnet34_cbam
-from networks.resnet_official import resnet18, resnet50,resnet34
 from networks.pre_resnet import PreResNet
-from networks.resnet_audioset import resnet22, resnet38,resnet54
-from networks.resnet_for_cifar import resnet32
+from networks.resnet_official import resnet18, resnet50,resnet34
 from networks.der_resnet import resnet18 as der_resnet18
 from networks.tiny_resnet import ResNet18 as tiny_resnet18
 from networks.densenet import DenseNet as densenet
-from networks.rnnmodel import RNNModel as rnn_model
-from networks.rnn_audioset import SimpleRNN
 from lib.swap_manager import SwapManager, SwapManager_ImageNet1k
 from lib.utils import _ECELoss
-import time
 import power_check as pc
 class Base(object):
     def __init__(self, model, opt_name, lr, lr_schedule, lr_decay, device, num_epochs, swap,

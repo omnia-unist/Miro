@@ -1,13 +1,12 @@
 from torch.utils.data import Dataset
 from torchvision import transforms
-from torchvision.datasets import CIFAR100, CIFAR10, ImageNet, ImageFolder
+from torchvision.datasets import CIFAR100, CIFAR10
 
 from PIL import Image
 import numpy as np
 import os
 import pickle
 import torch
-import pandas as pd
 
 def concatenate(datas,labels):
     con_data=datas[0]

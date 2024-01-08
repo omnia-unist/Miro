@@ -62,7 +62,6 @@ class Optimizer(object):
 		self.params = ['rb_size','st_size']
 		self.grid=[]
 		print(f'Profiler Search Space {self.base_grid}')
-		# self.observations=np.full((len(self.params),len(self.grid)),-1,dtype=float)
 	def score_functions(self, score_policy, navi_policy):
 		scorers = {'most_efficient':self.most_efficient,
 					'lowest_energy': self.lowest_energy,
@@ -203,7 +202,7 @@ class Optimizer(object):
 		scores = self.scores[-1]
 		for i in range(len(observation[0])):
 			if i in filtered_configs_idxs: scores[i] = observation[0,i]/observation[1,i]
-		print(np.argsort(scores)[0])
+		# print(np.argsort(scores)[0])
 		best_config_idx =  np.argsort(scores)[-1]
 
 		for i in range(len(observation[0])):

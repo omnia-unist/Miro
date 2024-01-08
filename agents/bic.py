@@ -1,6 +1,4 @@
-from collections import defaultdict
 from math import inf
-import matplotlib.pyplot as plt
 from torch.nn import functional as F
 import torch
 import torch.nn
@@ -18,25 +16,15 @@ from agents.base import Base
 # from lib.graph import Graph
 from _utils.sampling import multi_task_sample_update_to_RB
 from lib import utils
-from lib.save import DataSaver
 import math
 import gc
 import time
 
-import csv 
 import gc
 import random
-import sys
-import tracemalloc
 
 from dataset.validate import ValidateDataset
 
-# plt tsne
-# from sklearn.manifold import TSNE
-import pandas as pd
-# import seaborn as sns
-
-# Xinyue Not used in BiC
 class SplitedStreamDataset(Dataset):
     def __init__(self, data, targets, ac_idx=None):
         self.data = data

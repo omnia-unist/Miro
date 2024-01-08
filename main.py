@@ -95,7 +95,6 @@ def main():
         time.sleep(10)
         pl.stop()
         if JTOP: jl.stop()
-        
         pl.showDataTraces(filename=final_params.filename)
         events = pl.evenLog
         f1 = open(f'{final_params.results_save_path}/test/event_log.csv','a')

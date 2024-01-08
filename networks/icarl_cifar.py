@@ -1,5 +1,5 @@
 import torch.nn as nn
-from networks.layers_2 import ConvBlock, InitialBlock, FinalBlock
+from networks.layers import ConvBlock, InitialBlock, FinalBlock
 
 
 class BasicBlock(nn.Module):

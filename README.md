@@ -21,7 +21,7 @@ Run Experiments
 ```console
 
 # CIFAR-100 
-python main.py --config=./config/cifar100/er_cifar_with_miro.yml
+python main.py --config=./config/cifar/er_cifar100_with_miro.yml
 
 # Tiny-ImageNet
 python main.py --config=./config/tiny/er_tiny_with_miro.yml

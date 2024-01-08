@@ -1,1 +1,8 @@
 **/__pycache__/
+**/**/__pycache__/
+./data
+!./data/UrbanSound8K_spec.zip
+!./data/dailynsports_data.zip
+!./data/cifar-100-python.tar.gz
+./saved_checkpoints/*
+./results_test/

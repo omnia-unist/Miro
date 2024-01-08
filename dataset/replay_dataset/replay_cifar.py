@@ -220,26 +220,6 @@ class ReplayCIFAR(Dataset):
         self.filenames.shm.close()
         self.filled.shm.close()
     
-    # def get_sub_data(self, label):
-    #     if label in self.offset and label in self.len_per_cls:
-    #         st = self.offset[label]
-    #         en = self.offset[label]+self.len_per_cls[label]
-    #         sub_index = list(range(st,en))
-    #         sub_data, sub_label, sub_filename = self[st:en]
-    #         return sub_data, sub_label,sub_filename,sub_index
-    #     else:
-    #         sub_data = []
-    #         sub_index = []
-    #         sub_label = []
-    #         for idx in range(len(self)):
-    #             if self.targets[idx] == label:
-    #                 data,label,filename = self[idx]
-    #                 sub_data.append(data)
-    #                 sub_label.append(label)
-    #                 sub_filename.append(filename)
-    #                 sub_index.append(idx)
-    #         return sub_data, sub_label, sub_filename,sub_index
-
     def __len__(self):
         return self.filled[0]
         

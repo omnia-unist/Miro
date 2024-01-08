@@ -153,34 +153,47 @@ def experiment(final_params):
 
         if not hasattr(final_params, 'swap_options'):
             final_params.swap_options = []
-        continual = Continual(**vars(final_params))
-        
-        print("[Preparing Dataset] CIFAR100...", end='  ')
-        dataset = iCIFAR100('./data')
-
-        assert(sum([task*cls_num for (task,cls_num) in num_task_cls_per_task])<=100)
-        if final_params.jetson: 
-            import power_check as pc
-            pl = final_params.power_log
+        try:
+            continual = Continual(**vars(final_params))
             
-        [task_st, class_st] = [0,0]
-        for (num_task, cls_per_task) in num_task_cls_per_task:
-            for task_id in range (task_st,task_st+num_task):
-                if final_params.jetson: 
-                    pc.printFullReport()
-                    pl.recordEvent(name='New Task Start')
-                    
-                for x in range (class_st, class_st + cls_per_task):
-                    dataset.getTrainData(class_order[x])
-                    for i in range(len(dataset)):
-                        img,label = dataset[i]
-                        continual.send_stream_data(img,label,task_id)
-                class_st+=cls_per_task  
-                continual.samples_per_task = cls_per_task*final_params.samples_per_cls
-                continual.train_disjoint(task_id)
+            print("[Preparing Dataset] CIFAR100...", end='  ')
+            dataset = iCIFAR100('./data')
 
-            task_st += num_task
-        
+            assert(sum([task*cls_num for (task,cls_num) in num_task_cls_per_task])<=100)
+            if final_params.jetson: 
+                import power_check as pc
+                pl = final_params.power_log
+                
+            [task_st, class_st] = [0,0]
+            for (num_task, cls_per_task) in num_task_cls_per_task:
+                for task_id in range (task_st,task_st+num_task):
+                    if final_params.jetson: 
+                        pc.printFullReport()
+                        pl.recordEvent(name='New Task Start')
+                        
+                    for x in range (class_st, class_st + cls_per_task):
+                        dataset.getTrainData(class_order[x])
+                        for i in range(len(dataset)):
+                            img,label = dataset[i]
+                            continual.send_stream_data(img,label,task_id)
+                    class_st+=cls_per_task  
+                    continual.samples_per_task = cls_per_task*final_params.samples_per_cls
+                    continual.train_disjoint(task_id)
+
+                task_st += num_task
+        except:
+            print("Early Termination.")
+            if final_params.jetson: 
+                pc.printFullReport()
+                pl.recordEvent(name='All Task End')
+
+            # Close Shared Memory 
+            continual.agent.replay_dataset.cleanup()
+            f1 = open(final_params.result_save_path + final_params.filename + '_accuracy.txt', 'a')
+            f1.write(f'Total number of swapping: {sum(continual.agent.num_swap)}\n')
+            f1.write(f'Total rounds of swapping: {len(continual.agent.num_swap)}\n')
+            f1.close()
+            print(f'Total number of swapping: {sum(continual.agent.num_swap)}\n')
         if final_params.jetson: 
             pc.printFullReport()
             pl.recordEvent(name='All Task End')

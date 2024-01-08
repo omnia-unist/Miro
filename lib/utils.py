@@ -10,11 +10,8 @@ from torchvision import transforms
 #str
 from torch.utils.data import DataLoader
 
-import matplotlib as mpl
-import matplotlib.pyplot as plt
 import numpy as np
 
-import sys
 class _ECELoss(torch.nn.Module):
     """
     Calculates the Expected Calibration Error of a model.
