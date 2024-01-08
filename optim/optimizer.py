@@ -12,8 +12,6 @@ import random
 
 import time
  
-pre_result_path_us8k = '/home/xinyuema/carm-0117/results_test/profile/er_us8k_r_100_100_optim_full_/_er_us8k_r_100_100_optim_full_run0_optimizer.csv'
-pre_result_path_cifar = '/home/xinyuema/carm-0117/results_test/profile/cifar_use_csv.csv'
 class Optimizer(object):
 	def __init__(self, observer, param_list, device, func=None):
 		self.baseline = []
@@ -374,13 +372,7 @@ class Optimizer(object):
        
 			del test_model, test_opt, test_lr_scheduler
 			gc.collect()
-			if use_csv:
-				if self.test_set == 'urbansound8k':
-					self.observations[:,next_idx] = [observation['acc'],list(self.pre_results.loc[(self.pre_results['task_id']==task_id) & (self.pre_results[" rb_size"]==next_config[0]) & (self.pre_results[" st_size"]==next_config[1])][" energy_estimate"])[0]]
-				else: 
-					self.observations[:,next_idx] = [observation['acc'], next_config[0]+next_config[1]]
-			else:
-				self.observations[:,next_idx] = [observation['acc'],observation['energy_estim']]
+			self.observations[:,next_idx] = [observation['acc'],observation['energy_estim']]
 			cnt+=1
 			print(f'Profiler accuracy: {next_config} -> {list(self.observations[:,next_idx])}')
 
