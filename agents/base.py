@@ -12,6 +12,7 @@ from networks.pre_resnet import PreResNet
 from networks.resnet_official import resnet18, resnet50,resnet34
 from networks.der_resnet import resnet18 as der_resnet18
 from networks.tiny_resnet import ResNet18 as tiny_resnet18
+from networks.resnet_dsads import resnet_dsads
 from networks.densenet import DenseNet as densenet
 from lib.swap_manager import SwapManager, SwapManager_ImageNet1k
 from lib.utils import _ECELoss
@@ -82,15 +83,9 @@ class Base(object):
         if model == "resnet18":
             self.model = network(resnet18())
             self.ckpt_model =network(resnet18())
-        elif model == "resnet22":
-            self.model =network(resnet22())
-            self.ckpt_model =network(resnet22())
-        elif model == "resnet38":
-            self.model =network(resnet38())
-            self.ckpt_model =network(resnet38())
-        elif model == "resnet54":
-            self.model =network(resnet54())
-            self.ckpt_model =network(resnet54())
+        elif model == "resnet_dsads":
+            self.model =resnet_dsads()
+            self.ckpt_model =resnet_dsads()
         elif model == "resnet32":
             self.model = network(PreResNet(32))
             self.ckpt_model =  network(PreResNet(32))

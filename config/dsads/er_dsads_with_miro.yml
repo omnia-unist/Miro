@@ -5,14 +5,14 @@ parameters:
   agent_name: er_dsads
   test_set: dailynsports
   test_set_path: data/dailynsports_data
-  model: resnet18
+  model: resnet_dsads
   mode: disjoint
   filename: er_dsads_with_miro_
   result_save_path: results_test/dsads/
   save_final_model: false
   save_tasks: true
   checkpoint_path: ./saved_checkpoints/
-  saver: false 
+  saver: true 
   run: 1
   epochs: 10
   batch_size: 16

@@ -15,18 +15,10 @@ class resnet_dsads(nn.Module):
         """ self.incremental_fc is defined so as network from my network could perform incremental learning """
         self.incremental_fc = None
         
-    """ resizer to transform (125,45) to (224,224) """
-    # def resizer(self, x):
-    #     return F.interpolate(x, size=(224, 224), mode='bilinear', align_corners=False)
         
 
     def forward(self, input):
-        # print(input.size)
-        # change (batch_size,#col,#row) into (batch_size,1,#col,#row)
         input = input.unsqueeze(1)
-        # print(input.size)
-        # change (batch_size,1,#col,#row) into (batch_size,1,224,224)
-        # input = self.resizer(input)
         
         x = self.resnet(input)
 

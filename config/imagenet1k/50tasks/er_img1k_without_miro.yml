@@ -21,7 +21,7 @@ parameters:
   sampling: ringbuffer
   save_final_model: false
   save_tasks: true
-  saver: false
+  saver: true
   seed_start: 0
   st_size: 26000
   swap: true
